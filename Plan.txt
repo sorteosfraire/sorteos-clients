@@ -1,0 +1,86 @@
+Crea una planeación detallada de proyecto con las siguientes características. (redáctalo de forma que pueda copiar en formato markdown)
+
+Proyecto: Sitio web de rifas
+
+Descripción:
+Plataforma web de rifas que permita a los clientes comprar boletos para participar en sorteos con premios atractivos. Los administradores podrán gestionar múltiples rifas de forma eficiente y los clientes disfrutarán de una experiencia de usuario intuitiva para la compra de boletos. El sistema debe manejar hasta 100,000 boletos por rifa y garantizar la disponibilidad.
+
+Pantallas para el cliente:
+- Inicio: 
+    * Navbar (visible en todas las pantallas):
+        -- Logotipo
+        -- Botón para redireccionar a la pantalla "Preguntas frecuentes"
+        -- Botón para redireccionar a la pantalla "Contacto"
+        -- Botón para redireccionar a la pantalla "Metodos de pago"
+        -- Botón para redireccionar a la pantalla "Verificador de boletos"
+    * Slide para las rifas vigentes 
+    * Slide con los ganadores de las rifas finalizadas
+    * Cuadricula de premios entregados
+- Rifa: 
+    * Imagen del premio
+    * Descripción detallada de los premios
+    * Lista de boletos seleccionados:
+        -- (Funcion) Se oculta si no hay boletos seleccionados
+        -- Texto indicando que esos son los boletos seleccionados
+        -- Cuadricula con todos los boletos seleccionados (boton con el numero de boleto) en estado apartado corto plazo
+        -- Botón para confirmar el apartado y redirigir a la pantalla de confirmacion de apartado
+    * Botón para buscar un numero de boleto en la cuadricula:
+        -- Ocultar los botones de la cuadricula que no coincidan mientras se escribe
+    * Botón para seleccionar al azar N cantidad de boletos disponibles:
+        -- Al lado del boton una lista desplegable que representa los posibles valores de N en multiplos de 5
+    * Cuadrícula con scroll infinito con todos los boletos (boton con el numero de boleto):
+        -- Disponibles (fondo blanco) y apartados (fondo ambar)
+        -- No mostrar boletos comprados
+- Confirmación de apartado: 
+    * Instrucciones para finalizar la compra mediante una transferencia SPEI indicando que será redireccionado a WhatsApp
+    * Lista en texto de boletos seleccionados
+    * Input text para el número de WhatsApp
+    * Input text para el Estado (lista desplegable de estados de México)
+    * Input text para el nombre, si el número ya está registrado el resto de datos se autocompletara 
+    * Botón para confirmar y ser redireccionado a WhatsApp.
+
+- Verificador de boletos: 
+    * Lista desplegable de los sorteos
+    * Textbox para ingresar los numeros de boletos (uno por linea) 
+    * Botón para confirmar, 
+    * Modal mostrando la información de los boletos, cada boleto en una card
+
+Card de boleto:
+- Imagen principal del premio
+- Numero del boleto
+- Estado del boleto: Pagado, apartado o Disponible
+- Información sensible del participante sensurada parcialmente con enmascaramiento de datos:
+    * Número de teléfono (solo mostrar últimos 2 digitos)
+    * Nombre del cliente (solo mostrar iniciales)
+    * Estado de residencia (solo mostrar primera letra)
+
+Estados del boleto:
+- Disponible: Estado inicial del boleto, a la espera de ser apartado.
+- Apartado corto plazo: Cuando un cliente lo selecciona. Caduca cuando el cliente se sale del sitio sin confirmar el apartado o en 6 horas
+- Apartado largo plazo: Cuando un cliente llena el formulario con sus datos y envia el mensaje de WhatsApp. Caduca en una semana
+- Comprado/Pagado: Cuando el cliente envia el comprobante de la transferencia SPEI y el administrador la confirma en el sistema
+
+Tecnologias:
+- node (22.11.0)
+- typescript
+- React
+- Tailwind
+
+Dominio:
+- Hostinger ($300 mxn/año)
+
+Host:
+- Hostinger (KVM 2 $320 MXN/mes):
+    * vCPU = 2
+    * RAM = 8GB
+    * Espacio en disco NVMe = 100GB
+    * Ancho de banda = 8TB
+    * Velocidad de red = 300MB/s
+- Netlify:
+
+
+Base de datos:
+- MongoDB Atlas (Dedicated M10+ $0.08 USD/hr):
+    * Storage = 10 GB
+    * RAM = 2 GB
+    * vCPU = 2 vCPUs
