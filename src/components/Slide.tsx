@@ -12,9 +12,9 @@ const Slide: React.FC<SlideProps> = ({ title }) => {
   const { theme } = useTheme(); // Obtener el tema actual desde el contexto
 
   const items = [
-    { id: 1, image: "/rifas/1.jpg", title: "Rifa 1" },
-    { id: 2, image: "/rifas/2.jpg", title: "Rifa 2" },
-    { id: 3, image: "/rifas/3.jpg", title: "Rifa 3" },
+    { id: 1, image: "/images/premio1.jpg", title: "Rifa 1" },
+    { id: 2, image: "/images/carro.jpg", title: "Rifa 2" },
+    { id: 3, image: "/images/television.jpg", title: "Rifa 3" },
   ];
 
   const nextSlide = () => {
