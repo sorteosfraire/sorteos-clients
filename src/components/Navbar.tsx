@@ -1,6 +1,6 @@
-// components/Navbar.tsx
 "use client";  // Asegura que este archivo solo se ejecute en el cliente
 
+import Link from "next/link"; // Importar Link para la navegación de Next.js
 import { useTheme } from "@/context/ThemeContext"; // Importar el hook de contexto
 
 const Navbar = () => {
@@ -10,14 +10,16 @@ const Navbar = () => {
     <nav
       className={`${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
-      } shadow-md py-4 transition-colors`} // Aplicar clases dinámicamente según el tema
+      } shadow-md py-4 transition-colors cursor-pointer`} // Aplicar clases dinámicamente según el tema y evitar el cursor tipo texto
     >
       <div className="container mx-auto flex justify-between items-center px-6">
-        {/* Logo */}
-        <div className="text-2xl font-bold">MiLogo</div>
+        {/* Logo que redirige a la página principal */}
+        <Link href="/" className="text-2xl font-bold cursor-pointer">
+          MiLogo
+        </Link>
 
         {/* Menú móvil */}
-        <button className="block md:hidden focus:outline-none">
+        <button className="block md:hidden focus:outline-none cursor-pointer">
           <svg
             className="w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -38,14 +40,14 @@ const Navbar = () => {
         <ul
           className={`${
             theme === "dark" ? "bg-gray-900" : "bg-white"
-          } md:flex space-x-6 absolute md:static top-full left-0 w-full md:bg-transparent md:w-auto md:flex-row`}
+          } md:flex space-x-6 absolute md:static top-full left-0 w-full md:bg-transparent md:w-auto md:flex-row cursor-pointer`}
         >
           <li>
             <a
               href="/faq"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              }`}
+              } cursor-pointer`}
             >
               Preguntas Frecuentes
             </a>
@@ -55,7 +57,7 @@ const Navbar = () => {
               href="/contacto"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              }`}
+              } cursor-pointer`}
             >
               Contacto
             </a>
@@ -65,7 +67,7 @@ const Navbar = () => {
               href="/metodos-de-pago"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              }`}
+              } cursor-pointer`}
             >
               Métodos de Pago
             </a>
@@ -73,9 +75,9 @@ const Navbar = () => {
         </ul>
 
         {/* Botón de cambio de tema */}
-        <div className="ml-auto flex items-center">
+        <div className="ml-auto flex items-center cursor-pointer">
           <div
-            className={`relative w-14 h-8 flex items-center rounded-full p-1 cursor-pointer ${
+            className={`relative w-14 h-8 flex items-center rounded-full p-1 ${
               theme === "dark" ? "bg-gray-600" : "bg-gray-300"
             }`}
             onClick={toggleTheme}
