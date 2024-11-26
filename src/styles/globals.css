@@ -10,5 +10,35 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+
+  /* Elimina el color de fondo estático para permitir el tema dinámico */
+  /* El color será controlado por Tailwind en el contenedor principal */
+  
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+html, body {
+  height: 100%; /* Asegúrate de que el fondo cubra toda la pantalla */
+}
+
+#__next {
+  height: 100%; /* Configura el contenedor principal para usar el tema */
+}
+
+/* Efecto de círculo que sigue el cursor */
+.animate-follow-cursor {
+  position: absolute;
+  animation: followCursor 3s infinite;
+}
+
+@keyframes followCursor {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

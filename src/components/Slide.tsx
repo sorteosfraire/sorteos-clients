@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 type SlideProps = {
   title: string;
@@ -8,7 +9,8 @@ type SlideProps = {
 
 const Slide: React.FC<SlideProps> = ({ title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+  const { isDarkMode } = useTheme(); // Usamos el contexto del tema
+
   const items = [
     { id: 1, image: "/rifas/1.jpg", title: "Rifa 1" },
     { id: 2, image: "/rifas/2.jpg", title: "Rifa 2" },
@@ -25,7 +27,9 @@ const Slide: React.FC<SlideProps> = ({ title }) => {
 
   return (
     <div className="relative w-full">
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
+      <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? "text-white" : "text-black"}`}>
+        {title}
+      </h3>
       <div className="overflow-hidden rounded-lg">
         <img
           src={items[currentIndex].image}
@@ -33,10 +37,16 @@ const Slide: React.FC<SlideProps> = ({ title }) => {
           className="w-full h-60 object-cover"
         />
       </div>
-      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer" onClick={prevSlide}>
+      <div
+        className={`absolute top-1/2 left-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${isDarkMode ? "bg-white text-black" : "bg-black text-white"}`}
+        onClick={prevSlide}
+      >
         {"<"}
       </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full cursor-pointer" onClick={nextSlide}>
+      <div
+        className={`absolute top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${isDarkMode ? "bg-white text-black" : "bg-black text-white"}`}
+        onClick={nextSlide}
+      >
         {">"}
       </div>
     </div>

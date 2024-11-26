@@ -1,4 +1,10 @@
+"use client";
+
+import { useTheme } from "@/context/ThemeContext";
+
 const Grid = () => {
+  const { isDarkMode } = useTheme();
+
   const premios = [
     { id: 1, nombre: "Bicicleta", imagen: "/images/premio1.jpg" },
     { id: 2, nombre: "Televisor", imagen: "/images/premio1.jpg" },
@@ -11,7 +17,9 @@ const Grid = () => {
       {premios.map((premio) => (
         <div
           key={premio.id}
-          className="bg-white rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-all"
+          className={`rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-all ${
+            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          }`}
         >
           <img
             src={premio.imagen}
