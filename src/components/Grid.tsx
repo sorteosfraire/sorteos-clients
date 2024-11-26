@@ -1,9 +1,9 @@
 "use client";
 
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext"; // Importar el hook de contexto
 
 const Grid = () => {
-  const { isDarkMode } = useTheme();
+  const { theme } = useTheme(); // Usar el estado del tema desde el contexto
 
   const premios = [
     { id: 1, nombre: "Bicicleta", imagen: "/images/premio1.jpg" },
@@ -18,8 +18,8 @@ const Grid = () => {
         <div
           key={premio.id}
           className={`rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-all ${
-            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-          }`}
+            theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"
+          }`} // Asegurarse de comparar el valor exacto del tema
         >
           <img
             src={premio.imagen}

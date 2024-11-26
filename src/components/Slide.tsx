@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext"; // Usar el hook de contexto
 
 type SlideProps = {
   title: string;
@@ -9,7 +9,7 @@ type SlideProps = {
 
 const Slide: React.FC<SlideProps> = ({ title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { isDarkMode } = useTheme(); // Usamos el contexto del tema
+  const { theme } = useTheme(); // Obtener el tema actual desde el contexto
 
   const items = [
     { id: 1, image: "/rifas/1.jpg", title: "Rifa 1" },
@@ -27,9 +27,14 @@ const Slide: React.FC<SlideProps> = ({ title }) => {
 
   return (
     <div className="relative w-full">
-      <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? "text-white" : "text-black"}`}>
+      {/* Título del slider */}
+      <h3
+        className={`text-xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}
+      >
         {title}
       </h3>
+
+      {/* Imagen del slide */}
       <div className="overflow-hidden rounded-lg">
         <img
           src={items[currentIndex].image}
@@ -37,14 +42,22 @@ const Slide: React.FC<SlideProps> = ({ title }) => {
           className="w-full h-60 object-cover"
         />
       </div>
+
+      {/* Botón izquierdo */}
       <div
-        className={`absolute top-1/2 left-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${isDarkMode ? "bg-white text-black" : "bg-black text-white"}`}
+        className={`absolute top-1/2 left-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${
+          theme === "dark" ? "bg-white text-black" : "bg-black text-white"
+        }`}
         onClick={prevSlide}
       >
         {"<"}
       </div>
+
+      {/* Botón derecho */}
       <div
-        className={`absolute top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${isDarkMode ? "bg-white text-black" : "bg-black text-white"}`}
+        className={`absolute top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full cursor-pointer ${
+          theme === "dark" ? "bg-white text-black" : "bg-black text-white"
+        }`}
         onClick={nextSlide}
       >
         {">"}

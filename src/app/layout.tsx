@@ -1,8 +1,7 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "../styles/globals.css";
-import ThemeWrapper from "@/components/ThemeWrapper"; // Importa el nuevo wrapper
+import "../styles/globals.css"; // Asegúrate de importar tus estilos globales
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider>
-          <ThemeWrapper>{children}</ThemeWrapper>
+          {children}
         </ThemeProvider>
       </body>
     </html>

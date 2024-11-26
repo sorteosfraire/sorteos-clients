@@ -1,14 +1,14 @@
 // pages/_app.tsx
+import { AppProps } from 'next/app';
+import { ThemeProvider } from '../src/context/ThemeContext'; // Asegúrate de importar el ThemeProvider
 import '../src/styles/globals.css';  // Importa tus estilos globales
-
-import { AppProps } from 'next/app'; // Importa AppProps para definir el tipo de las props
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // Aquí puedes agregar el Navbar o cualquier otro componente común para todas las páginas
-    <>
-      <Component {...pageProps} />  {/* Este es el componente de la página actual */}
-    </>
+    // Envolver la aplicación con ThemeProvider para que el contexto de tema esté disponible
+    <ThemeProvider>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 
