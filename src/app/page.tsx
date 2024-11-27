@@ -49,7 +49,7 @@ export default function Page() {
       {/* Botón de cambio de tema (opcional si quieres incluirlo aquí también) */}
       <button
         onClick={toggleTheme}
-        className="fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full"
+        className="fixed bottom-4 right-4 p-2 bg-gray-500 text-white rounded-full"
       >
         Cambiar Tema
       </button>

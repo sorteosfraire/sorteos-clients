@@ -1,6 +1,6 @@
-"use client";  // Asegura que este archivo solo se ejecute en el cliente
+"use client"; // Asegura que este archivo solo se ejecute en el cliente
 
-import Link from "next/link"; // Importar Link para la navegación de Next.js
+import Link from "next/link"; // Importar el componente Link de Next.js para navegación
 import { useTheme } from "@/context/ThemeContext"; // Importar el hook de contexto
 
 const Navbar = () => {
@@ -9,79 +9,63 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
-      } shadow-md py-4 transition-colors cursor-pointer`} // Aplicar clases dinámicamente según el tema y evitar el cursor tipo texto
+        theme === "dark"
+          ? "bg-gray-800 text-white border-b border-white/10"
+          : "bg-white text-black"
+      } shadow-md py-4 transition-colors`} // Aplicar clases dinámicamente según el tema
     >
-      <div className="container mx-auto flex justify-between items-center px-6">
-        {/* Logo que redirige a la página principal */}
-        <Link href="/" className="text-2xl font-bold cursor-pointer">
+      <div className="container mx-auto flex items-center justify-between px-6">
+        {/* Logo con enlace a la página principal */}
+        <Link href="/" className="text-2xl font-bold">
           MiLogo
         </Link>
 
-        {/* Menú móvil */}
-        <button className="block md:hidden focus:outline-none cursor-pointer">
-          <svg
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
-        {/* Links */}
+        {/* Links centrados */}
         <ul
-          className={`${
-            theme === "dark" ? "bg-gray-900" : "bg-white"
-          } md:flex space-x-6 absolute md:static top-full left-0 w-full md:bg-transparent md:w-auto md:flex-row cursor-pointer`}
+          className={`flex-grow flex justify-center items-center space-x-8 ${
+            theme === "dark" ? "bg-gray-800" : "bg-white"
+          }`}
         >
           <li>
-            <a
+            <Link
               href="/faq"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              } cursor-pointer`}
+              }`}
             >
               Preguntas Frecuentes
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/contacto"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              } cursor-pointer`}
+              }`}
             >
               Contacto
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/metodos-de-pago"
               className={`block px-4 py-2 rounded-md transition ${
                 theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-200"
-              } cursor-pointer`}
+              }`}
             >
               Métodos de Pago
-            </a>
+            </Link>
           </li>
         </ul>
 
         {/* Botón de cambio de tema */}
-        <div className="ml-auto flex items-center cursor-pointer">
+        <div className="ml-auto flex items-center">
           <div
-            className={`relative w-14 h-8 flex items-center rounded-full p-1 ${
-              theme === "dark" ? "bg-gray-600" : "bg-gray-300"
+            className={`relative w-14 h-8 flex items-center rounded-full p-1 cursor-pointer select-none ${
+              theme === "dark" ? "bg-gray-700" : "bg-gray-300"
             }`}
             onClick={toggleTheme}
-            onMouseDown={(e) => e.preventDefault()} // Elimina el punto de inserción
+            onMouseDown={(e) => e.preventDefault()} // Evita el punto de inserción al interactuar
           >
             {/* Deslizante */}
             <div
@@ -91,12 +75,16 @@ const Navbar = () => {
             ></div>
             {/* Íconos */}
             <span
-              className={`absolute left-2 ${theme === "dark" ? "hidden" : "block"} text-yellow-500`}
+              className={`absolute left-2 ${
+                theme === "dark" ? "hidden" : "block"
+              } text-yellow-500`}
             >
               ☀️
             </span>
             <span
-              className={`absolute right-2 ${theme === "dark" ? "block" : "hidden"} text-gray-300`}
+              className={`absolute right-2 ${
+                theme === "dark" ? "block" : "hidden"
+              } text-gray-300`}
             >
               🌙
             </span>

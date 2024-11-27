@@ -1,4 +1,3 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class', // Activa el soporte para el modo oscuro basado en clases
@@ -10,19 +9,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Personalización de colores para temas claros y oscuros
         light: {
-          background: "#ffffff",
-          text: "#000000",
+          background: "#ffffff", // Fondo general claro
+          text: "#000000",       // Texto general claro
+          cardBg: "#f9f9f9",     // Fondo específico de tarjeta
+          cardText: "#1a1a1a",   // Texto específico de tarjeta
         },
         dark: {
-          background: "#1a1a1a",
-          text: "#f5f5f5",
+          background: "#1a1a1a", // Fondo general oscuro
+          text: "#f5f5f5",       // Texto general oscuro
+          cardBg: "#2d2d2d",     // Fondo específico de tarjeta
+          cardText: "#e0e0e0",   // Texto específico de tarjeta
         },
       },
       transitionProperty: {
         // Añade transiciones para cambios de tema
-        'theme': 'background-color, color, border-color',
+        theme: 'background-color, color, border-color',
       },
     },
   },

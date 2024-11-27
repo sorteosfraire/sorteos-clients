@@ -5,11 +5,11 @@ import { useTheme } from "@/context/ThemeContext";  // Obtener el contexto de te
 import Navbar from "../src/components/Navbar";  // Corrección en la ruta
 
 const Page = () => {
-  const { theme } = useTheme();  // Obtiene el tema actual del contexto
+  const { theme } = useTheme(); // Obtiene el tema actual del contexto
 
   return (
     // Aplicar el tema al cuerpo de la página con soporte para cookies
-    <div className={theme === "dark" ? "bg-black text-white" : "bg-white text-black"}>
+    <div className={`${theme === "dark" ? "bg-black text-white" : "bg-white text-black"} min-h-screen`}>
       {/* Navbar adaptado al tema */}
       <Navbar />
       

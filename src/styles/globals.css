@@ -4,6 +4,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html, body {
+  @apply min-h-screen;
+  background-color: var(--tw-bg-opacity);
+}
 
 /* Estilos globales personalizados */
 body {

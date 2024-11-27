@@ -8,7 +8,7 @@ const FAQPage = () => {
 
   return (
     // Aplicar el tema al cuerpo de la página
-    <div className={theme === "dark" ? "bg-black text-white" : "bg-white text-black"}>
+    <div className={`${theme === "dark" ? "bg-black text-white" : "bg-white text-black"} min-h-screen`}>
       {/* Navbar adaptado al tema */}
       <Navbar />
       
