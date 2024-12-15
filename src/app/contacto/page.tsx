@@ -2,7 +2,7 @@
 "use client";  // Asegura que este archivo solo se ejecute en el cliente
 
 import { useTheme } from "@/context/ThemeContext";  // Obtener el contexto de tema
-import Navbar from "../src/components/Navbar";  // Corrección en la ruta
+import Navbar from "../../components/Navbar";  // Corrección en la ruta
 
 const Page = () => {
   const { theme } = useTheme(); // Obtiene el tema actual del contexto

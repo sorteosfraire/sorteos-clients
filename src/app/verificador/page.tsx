@@ -1,9 +1,9 @@
 "use client";
 
 import { useTheme } from "@/context/ThemeContext";  // Obtener el contexto de tema
-import Navbar from "../src/components/Navbar";
+import Navbar from "../../components/Navbar";  // Corrección en la ruta
 
-const FAQPage = () => {
+const Page = () => {
   const { theme } = useTheme();  // Obtiene el tema actual del contexto
 
   return (
@@ -13,11 +13,11 @@ const FAQPage = () => {
       <Navbar />
       
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold">Preguntas Frecuentes</h1>
-        <p className="mt-4">Aquí encontrarás las preguntas más comunes...</p>
+        <h1 className="text-3xl font-bold">Verifica tu Boleto</h1>
+        <p className="mt-4">Contenido próximamente...</p>
       </div>
     </div>
   );
 };
 
-export default FAQPage;
+export default Page;

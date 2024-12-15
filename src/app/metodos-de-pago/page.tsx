@@ -1,8 +1,8 @@
 "use client";
 
 import { useTheme } from "@/context/ThemeContext"; // Obtiene el tema
-import Navbar from "../src/components/Navbar"; // Obtiene Navbar
-import Card from "../src/components/Card"; // Obtiene el componente de tarjeta
+import Navbar from "../../components/Navbar"; // Obtiene Navbar
+import Card from "../../components/Card"; // Obtiene el componente de tarjeta
 
 const Page = () => {
   const { theme } = useTheme(); // Obtiene el tema actual del contexto
