@@ -21,11 +21,7 @@ const Navbar = () => {
         </Link>
 
         {/* Links centrados */}
-        <ul
-          className={`flex-grow flex justify-center items-center space-x-8 ${
-            theme === "dark" ? "bg-gray-800" : "bg-white"
-          }`}
-        >
+        <ul className="flex-grow flex justify-center items-center space-x-8">
           <li>
             <Link
               href="/faq"

@@ -1,7 +1,7 @@
 // src/context/ThemeContext.tsx
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, ReactNode } from "react";
 import Cookies from "js-cookie";
 
 // Define el tipo de tema posible
@@ -10,39 +10,48 @@ type Theme = "light" | "dark";
 interface ThemeContextProps {
   theme: Theme;
   toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
 }
+
+type ThemeAction = { type: "TOGGLE_THEME" } | { type: "SET_THEME"; payload: Theme };
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
+const themeReducer = (state: Theme, action: ThemeAction): Theme => {
+  switch (action.type) {
+    case "TOGGLE_THEME":
+      return state === "light" ? "dark" : "light";
+    case "SET_THEME":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, dispatch] = useReducer(themeReducer, "light");
 
   useEffect(() => {
-    // Verifica si hay un tema guardado en las cookies
     const savedTheme = Cookies.get("theme") as Theme | undefined;
-
-    // Si hay un tema guardado, configúralo
     if (savedTheme) {
-      setThemeState(savedTheme);
-      document.body.classList.toggle("dark", savedTheme === "dark");
+      dispatch({ type: "SET_THEME", payload: savedTheme });
     } else {
-      // Si no hay tema guardado, usa el tema claro por defecto
-      setThemeState("light");
       Cookies.set("theme", "light", { expires: 365 });
     }
   }, []);
 
+  useEffect(() => {
+    Cookies.set("theme", theme, { expires: 365 });
+  }, [theme]);
+
   const toggleTheme = () => {
-    const newTheme: Theme = theme === "light" ? "dark" : "light";
-    setThemeState(newTheme);
-    Cookies.set("theme", newTheme, { expires: 365 });
-    document.body.classList.toggle("dark", newTheme === "dark");
+    dispatch({ type: "TOGGLE_THEME" });
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme: setThemeState }}>
-      {children}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={theme === "dark" ? "dark" : ""}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
