@@ -7,6 +7,44 @@ import Grid from "../components/Grid";
 import { useTheme } from "@/context/ThemeContext"; // Importar el hook del contexto de tema
 import Cookies from "js-cookie"; // Importar Cookies
 
+// Definir los items para las rifas vigentes
+const rifasVigentes = [
+  {
+    id: 1,
+    image: "/images/premio1.jpg", 
+    title: "Gran Premio Especial",
+    description: "¡Participa en nuestra rifa especial con premios increíbles!"
+  },
+  {
+    id: 2,
+    image: "/images/carro.jpg",
+    title: "Auto Último Modelo",
+    description: "¡Gana este increíble automóvil 2024!"
+  },
+  {
+    id: 3, 
+    image: "/images/television.jpg",
+    title: "Smart TV 75\"",
+    description: "Pantalla LED 4K UHD Smart TV de última generación"
+  }
+];
+
+// Definir los items para los ganadores recientes
+const ganadoresRecientes = [
+  {
+    id: 1,
+    image: "/images/ganador1.jpg",
+    title: "Juan Pérez",
+    description: "¡Ganador del auto del mes pasado!"
+  },
+  {
+    id: 2,
+    image: "/images/ganador2.jpg", 
+    title: "María García",
+    description: "¡Ganadora de la Smart TV!"
+  }
+];
+
 export default function Page() {
   const { theme, toggleTheme } = useTheme(); // Obtener el tema y la función para cambiarlo
 
@@ -24,35 +62,50 @@ export default function Page() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
-      {/* Navbar visible en todas las páginas */}
+    <div className={`min-h-screen pt-20 ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
       <Navbar />
+      
+      <main className="container mx-auto px-4">
+        {/* Rifas Vigentes */}
+        <section className="mt-8">
+          <h2 className={`text-xl md:text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
+            Rifas Vigentes
+          </h2>
+          <div className="w-full max-w-5xl mx-auto">
+            <Slide 
+              title="Rifas Actuales" 
+              items={rifasVigentes}
+              height="h-48 md:h-96"
+              autoPlay={true}
+              interval={6000}
+            />
+          </div>
+        </section>
 
-      {/* Sección de Rifas Vigentes (Slide) */}
-      <section className="mt-8 container mx-auto px-4">
-        <h2 className={`text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Rifas Vigentes</h2>
-        <Slide title="Rifas Actuales" />
-      </section>
+        {/* Ganadores Recientes */}
+        <section className="mt-8 md:mt-16">
+          <h2 className={`text-xl md:text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
+            Ganadores Recientes
+          </h2>
+          <div className="w-full max-w-5xl mx-auto">
+            <Slide 
+              title="Últimos Ganadores" 
+              items={ganadoresRecientes}
+              height="h-40 md:h-80"
+              autoPlay={true}
+              interval={4000}
+            />
+          </div>
+        </section>
 
-      {/* Sección de Ganadores (Slide) */}
-      <section className="mt-8 container mx-auto px-4">
-        <h2 className={`text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Ganadores Recientes</h2>
-        <Slide title="Últimos Ganadores" />
-      </section>
-
-      {/* Cuadricula de Premios Entregados */}
-      <section className="mt-8 container mx-auto px-4">
-        <h2 className={`text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Premios Entregados</h2>
-        <Grid />
-      </section>
-
-      {/* Botón de cambio de tema (opcional si quieres incluirlo aquí también) */}
-      <button
-        onClick={toggleTheme}
-        className="fixed bottom-4 right-4 p-2 bg-gray-500 text-white rounded-full"
-      >
-        Cambiar Tema
-      </button>
+        {/* Premios Entregados */}
+        <section className="mt-8 md:mt-16 mb-8">
+          <h2 className={`text-xl md:text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
+            Premios Entregados
+          </h2>
+          <Grid />
+        </section>
+      </main>
     </div>
   );
 }

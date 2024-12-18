@@ -8,6 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1440px',
+      },
       colors: {
         light: {
           background: "#ffffff", // Fondo general claro
@@ -25,6 +33,9 @@ module.exports = {
       transitionProperty: {
         // Añade transiciones para cambios de tema
         theme: 'background-color, color, border-color',
+      },
+      spacing: {
+        'navbar': '4rem', // altura del navbar
       },
     },
   },
