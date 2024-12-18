@@ -68,9 +68,6 @@ export default function Page() {
       <main className="container mx-auto px-4">
         {/* Rifas Vigentes */}
         <section className="mt-8">
-          <h2 className={`text-xl md:text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
-            Rifas Vigentes
-          </h2>
           <div className="w-full max-w-5xl mx-auto">
             <Slide 
               title="Rifas Actuales" 
@@ -84,9 +81,6 @@ export default function Page() {
 
         {/* Ganadores Recientes */}
         <section className="mt-8 md:mt-16">
-          <h2 className={`text-xl md:text-2xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
-            Ganadores Recientes
-          </h2>
           <div className="w-full max-w-5xl mx-auto">
             <Slide 
               title="Últimos Ganadores" 
