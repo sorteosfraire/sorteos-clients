@@ -33,15 +33,15 @@ const rifasVigentes = [
 const ganadoresRecientes = [
   {
     id: 1,
-    image: "/images/ganador1.jpg",
+    image: "/images/Win-TV.webp",
     title: "Juan Pérez",
-    description: "¡Ganador del auto del mes pasado!"
+    description: "¡Ganador de la TV de esta semana!"
   },
   {
     id: 2,
-    image: "/images/ganador2.jpg", 
-    title: "María García",
-    description: "¡Ganadora de la Smart TV!"
+    image: "/images/Win-Car.webp", 
+    title: "Manuel García",
+    description: "¡Ganador del auto del mes!"
   }
 ];
 
@@ -67,8 +67,8 @@ export default function Page() {
       
       <main className="container mx-auto px-4">
         {/* Rifas Vigentes */}
-        <section className="mt-8">
-          <div className="w-full max-w-5xl mx-auto">
+        <section className="mt-auto mx-auto">
+          <div className="w-full max-w-full">
             <Slide 
               title="Rifas Actuales" 
               items={rifasVigentes}
@@ -80,8 +80,8 @@ export default function Page() {
         </section>
 
         {/* Ganadores Recientes */}
-        <section className="mt-8 md:mt-16">
-          <div className="w-full max-w-5xl mx-auto">
+        <section className="mt-3.5 mx-auto">
+          <div className="w-full max-w-full">
             <Slide 
               title="Últimos Ganadores" 
               items={ganadoresRecientes}
